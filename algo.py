@@ -1,7 +1,5 @@
 from sentence_transformers import SentenceTransformer,util
-from nltk.tokenize import sent_tokenize
 from collections import defaultdict
-import pandas as pd
 import numpy as np
 from heapq import heapify,heappop
 import networkx as nx
