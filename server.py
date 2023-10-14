@@ -5,6 +5,7 @@ from algo import return_summary
 
 
 ##server for flask app
+#deploy the app
 
 app = Flask(__name__)
 
