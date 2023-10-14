@@ -1,6 +1,4 @@
 from sentence_transformers import SentenceTransformer,util
-import nltk
-from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize
 from collections import defaultdict
 import pandas as pd
