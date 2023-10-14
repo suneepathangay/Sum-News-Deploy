@@ -1,4 +1,4 @@
-import requests
+
 from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS, cross_origin
 from algo import return_summary
@@ -41,4 +41,4 @@ def process_text():
 
 
 if( __name__ =='__main__'):
-    app.run(host="0.0.0.0",debug=True)
+    app.run(host="0.0.0.0",port=5000)
