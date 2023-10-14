@@ -4,6 +4,8 @@ from flask_cors import CORS, cross_origin
 from algo import return_summary
 
 
+##server for flask app
+
 app = Flask(__name__)
 
 CORS(app)
