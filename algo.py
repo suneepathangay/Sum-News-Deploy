@@ -22,9 +22,9 @@ def return_summary(text):
 
     ##defining our model
     
-   # load_model()
+    load_model()
 
-    model = SentenceTransformer('sentence-transformers/sentence-t5-base')
+    #model = SentenceTransformer('sentence-transformers/sentence-t5-base')
     
         
     #removing stop words from text and splitting them up.
@@ -48,7 +48,7 @@ def return_summary(text):
     
     
     
-    sentence_embeddings=model.encode(nostop_senteces,convert_to_tensor=True)
+    sentence_embeddings=loadded_model.encode(nostop_senteces,convert_to_tensor=True)
     
     
     
