@@ -7,12 +7,6 @@ from stopwords import get_stopwords
 import re
 
 
-loadded_model=None
-
-def load_model():
-    global loadded_model
-    if loadded_model is None:
-        loaded_model = SentenceTransformer('sentence-transformers/sentence-t5-base')
 
 
 
@@ -22,9 +16,8 @@ def return_summary(text):
 
     ##defining our model
     
-    load_model()
 
-    #model = SentenceTransformer('sentence-transformers/sentence-t5-base')
+    model = SentenceTransformer('sentence-transformers/sentence-t5-base')
     
         
     #removing stop words from text and splitting them up.
@@ -48,7 +41,7 @@ def return_summary(text):
     
     
     
-    sentence_embeddings=loadded_model.encode(nostop_senteces,convert_to_tensor=True)
+    sentence_embeddings=model.encode(nostop_senteces,convert_to_tensor=True)
     
     
     
@@ -82,12 +75,7 @@ def return_summary(text):
     
     summary=""
     
-    print(list_scores) 
-    
-    
-    
- 
-    
+    #print(list_scores) 
     
     for i in range(4):
         print(i)

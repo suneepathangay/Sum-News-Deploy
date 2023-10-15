@@ -48,7 +48,7 @@
                 }
                 let formatted_text=text.join(" ")
 
-                const url="http://127.0.0.1:5000/results";
+                const url="/results";
                 
                 const data = { text: formatted_text };
 
@@ -57,18 +57,25 @@
                     headers: {
                         'Content-Type': 'application/json', 
                     },
-                    body: JSON.stringify(data) 
+                    body: JSON.stringify(data),
                 });
+                console.log(response)
 
                 const responseData= await response.json()
                 
-                console.log(responseData)
+                //console.log(responseData)
 
-                const summary=responseData[0]
+                const summary=responseData["summary"]
+                console.log(summary)
 
                  //put the summary into local storage and then call it in the next page
                  localStorage.setItem('summary',summary)
-                 window.location.href='/summ'
+                 
+                 changeWindow()
+                }
+
+                function changeWindow(){
+                    window.location.href='summ'
                 }
             
             

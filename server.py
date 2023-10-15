@@ -8,9 +8,7 @@ from algo import return_summary
 #deploy the app
 
 app = Flask(__name__)
-
-CORS(app)
-
+CORS(app, resources={r"*": {"origins": "*", "supports_credentials": True}})
 
 
 @app.route('/')
@@ -30,16 +28,29 @@ def get_summ():
 def get_ocr():
     return render_template('ocr.html')
 
-@app.route('/results',methods=["GET","POST"])
+@app.route('/results',methods=["POST"])
 def process_text():
-    ##get the request from the sendData function
-    ##put it throught the alorithm and return the formatted text
+    data=request.get_json()
+    article=data['text']
+    summary=return_summary(article)
     
-    data = request.get_json() 
+    response = jsonify({"summary": summary})
+    response.headers.add("Access-Control-Allow-Origin", "http://192.168.68.62:5000")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+    response.headers.add("Access-Control-Allow-Methods", "POST")
     
-    text=data['text']
-    summary=return_summary(text)
-    return [summary]
+    return response
+
+# @app.route('/dummy',methods=["GET","POST"])
+# def dummy():
+#     data=request.get_json()
+#     response = data['text']
+    
+#     response.headers.add("Access-Control-Allow-Origin", "*")
+#     response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+#     response.headers.add("Access-Control-Allow-Methods", "POST")
+    
+#     return response
 
 
 if( __name__ =='__main__'):
